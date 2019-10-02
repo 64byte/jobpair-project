@@ -1,4 +1,4 @@
-var currentDate = new Date('2019-10-01');
+var currentDate = new Date();
 
 var dayOfName = ["일", "월", "화", "수", "목", "금", "토"]
 var daysOfMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -288,15 +288,19 @@ function updateSchedule() {
         var endDate = new Date(schedules[i].endDate);
         var diffDate = new Date(endDate - startDate);
 
-        let minRow = 0;
+        var maxRow = 0;
+
+        var setDate = new Date(schedules[i].startDate);
         for (var d = 0; d < diffDate.getDate(); ++d) {
-            let year = startDate.getFullYear();
-            let month = startDate.getMonth() + 1;
-            let day = startDate.getDate();
+            let year = setDate.getFullYear();
+            let month = setDate.getMonth() + 1;
+            let day = setDate.getDate();
 
             if (currentDate.getFullYear() == year) {
-                minRow = $('.' + month + '-' + day).children().length;
+                maxRow = Math.max(maxRow, $('.' + month + '-' + day).children().length);
             }
+
+            setDate.setDate(setDate.getDate()+1);
         }
 
         for (var d = 0; d < diffDate.getDate(); ++d) {
@@ -310,17 +314,17 @@ function updateSchedule() {
                 var curEle = $('.' + month + '-' + day);
                 var childLen = curEle.children().length;
                 if (d == 0) {
-                    for (var pad = childLen; pad < minRow; pad++)
+                    for (var pad = childLen; pad < maxRow; pad++)
                         curEle.append('<div></div>');
 
                     curEle.append('<div class="event event-start" data-span="1" data-toggle="popover" data-html="true" data-content=' + popup + '>' + schedules[i].name + '</div>');
                 } else if (d == diffDate.getDate() - 1) {
-                    for (var pad = childLen; pad < minRow; pad++)
+                    for (var pad = childLen; pad < maxRow; pad++)
                         curEle.append('<div></div>');
 
                     curEle.append('<div class="event event-end" data-span="1" data-toggle="popover" data-html="true" data-content=' + popup + '></div>');
                 } else {
-                    for (var pad = childLen; pad < minRow; pad++)
+                    for (var pad = childLen; pad < maxRow; pad++)
                         curEle.append('<div></div>');
 
                     curEle.append('<div class="event" data-span="1" data-toggle="popover" data-html="true" data-content=' + popup + '></div>');
@@ -341,6 +345,7 @@ function updateSchedule() {
 }
 
 function initRegModal() {
+    hideAlertMsg();
     $('.popover.fade.bs-popover-right.show').remove();
     $('#scheduleName').val('');
     $('#scheduleText').val('');
@@ -433,4 +438,9 @@ function showAlertMsg(message) {
     $('#errorMsg').html(message);
     $('#errorAlert').show();
     $('#errorAlert').addClass('show');
+}
+
+function hideAlertMsg() {
+    $('#errorMsg').html('');
+    $('#errorAlert').hide();
 }
