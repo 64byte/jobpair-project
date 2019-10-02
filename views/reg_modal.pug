@@ -7,6 +7,10 @@ block reg_modal
         button.close(type='button', data-dismiss='modal', aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
+        #errorAlert.alert.alert-warning.alert-dismissible.fade(role='alert' style='display: none')
+          #errorMsg
+          button.close(type='button' aria-label='Close' onclick="$('#errorAlert').hide()")
+            span(aria-hidden='true') &times;
         form#regForm
           .form-group
             label.col-form-label &#xC77C;&#xC815; &#xC81C;&#xBAA9;

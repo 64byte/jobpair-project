@@ -1,0 +1,11 @@
+[2019-10-02T11:52:42.930Z:info]: database connection 
+[2019-10-02T12:01:07.320Z:info]: database connection 
+[2019-10-02T12:01:18.293Z:error]: err is not defined 
+[2019-10-02T12:03:48.633Z:error]: err is not defined 
+[2019-10-02T12:03:57.322Z:info]: database connection 
+[2019-10-02T12:03:58.861Z:error]: schedule post error [object Object] 
+[2019-10-02T12:04:57.247Z:info]: database connection 
+[2019-10-02T12:05:08.164Z:error]: schedule post error undefined 
+[2019-10-02T12:06:04.111Z:error]: schedule post error undefined 
+[2019-10-02T12:06:27.500Z:info]: database connection 
+[2019-10-02T12:06:29.745Z:error]: schedule post error [object Object] 

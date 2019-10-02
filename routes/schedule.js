@@ -3,13 +3,16 @@ var router = express.Router();
 const { check, validationResult } = require('express-validator');
 const { Schedule } = require('../models');
 
+const logger = require('../util/logger');
+
 // GET all schedules
 router.get('/', (req, res, next) => {
     Schedule.findAll().then((result) => {
         if (!result) {
+            logger.error(`schedule get error`);
             return res.status(400).send({
                 status: 'fail',
-                message: err.message
+                message: `can't load data from the server`
             });
         }
 
@@ -20,6 +23,7 @@ router.get('/', (req, res, next) => {
             }
         })
     }).catch((err) => {
+        logger.error(`schedule get error ${err.message}`);
         return res.status(400).send({
             status: 'fail',
             message: err.message
@@ -50,6 +54,7 @@ router.post('/', [
 ], (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+        logger.error(`schedule post error request body is bad`);
         return res.status(422).send({
             status: 'error',
             message: errors.array()
@@ -71,6 +76,7 @@ router.post('/', [
             }
         })
     }).catch((err) => {
+        logger.error(`schedule post error ${err.message}`);
         return res.status(400).send({
             status: 'fail',
             message: err.message

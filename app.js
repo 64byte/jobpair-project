@@ -9,8 +9,11 @@ var scheduleRouter = require('./routes/schedule');
 var usersRouter = require('./routes/users');
 var sequelize = require('./models/index').sequelize;
 
+var fileLogger = require('./util/logger');
+
 var app = express();
 sequelize.sync();
+fileLogger.info('database connection');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -36,6 +39,8 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  fileLogger.error(err.message);
 
   // render the error page
   res.status(err.status || 500);
