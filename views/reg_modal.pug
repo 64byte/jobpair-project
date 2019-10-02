@@ -1,0 +1,63 @@
+block reg_modal
+ #registerSchedule.modal.fade(tabindex='-1', role='dialog', aria-labelledby='registerScheduleLabel', aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#registerScheduleLabel.modal-title &#xC77C;&#xC815; &#xB9CC;&#xB4E4;&#xAE30;
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        form#regForm
+          .form-group
+            label.col-form-label &#xC77C;&#xC815; &#xC81C;&#xBAA9;
+            input#scheduleName.form-control(type='text')
+          .form-group
+            label.col-form-label(for='scheduleText') &#xC77C;&#xC815; &#xC124;&#xBA85;
+            textarea#scheduleText.form-control
+          .form-row
+            .col-md-6
+              .form-group
+                label.col-form-label &#xC77C;&#xC815; &#xC2DC;&#xC791; &#xB0A0;&#xC9DC;
+                #datetimepicker1.input-group.date(data-target-input='nearest')
+                  input#startDate.form-control.datetimepicker-input(type='text', data-target='#datetimepicker1')
+                  .input-group-append(data-target='#datetimepicker1', data-toggle='datetimepicker')
+                    .input-group-text
+                      i.material-icons
+                        | calendar_today
+            .col-md-6
+              .form-group
+                label.col-form-label &#xC77C;&#xC815; &#xC2DC;&#xC791; &#xC2DC;&#xAC04;
+                #datetimepicker2.input-group.date(data-target-input='nearest')
+                  input#startTime.form-control.datetimepicker-input(type='text', data-target='#datetimepicker2')
+                  .input-group-append(data-target='#datetimepicker2', data-toggle='datetimepicker')
+                    .input-group-text
+                      i.material-icons
+                        | access_time
+          .form-row
+            .col-md-6
+              .form-group
+                label.col-form-label &#xC77C;&#xC815; &#xC885;&#xB8CC; &#xB0A0;&#xC9DC;
+                #datetimepicker3.input-group.date(data-target-input='nearest')
+                  input#endDate.form-control.datetimepicker-input(type='text', data-target='#datetimepicker3')
+                  .input-group-append(data-target='#datetimepicker3', data-toggle='datetimepicker')
+                    .input-group-text
+                      i.material-icons
+                        | calendar_today
+            .col-md-6
+              .form-group
+                label.col-form-label &#xC77C;&#xC815; &#xC885;&#xB8CC; &#xC2DC;&#xAC04;
+                #datetimepicker4.input-group.date(data-target-input='nearest')
+                  input#endTime.form-control.datetimepicker-input(type='text', data-target='#datetimepicker4')
+                  .input-group-append(data-target='#datetimepicker4', data-toggle='datetimepicker')
+                    .input-group-text
+                      i.material-icons
+                        | access_time
+            .form-check.form-check-inline
+              input#inlineCheckbox1.form-check-input(type='checkbox', value='option1')
+              label.form-check-label(for='inlineCheckbox1') &#xB9E4;&#xC6D4; &#xBC18;&#xBCF5;
+            .form-check.form-check-inline
+              input#inlineCheckbox2.form-check-input(type='checkbox', value='option2')
+              label.form-check-label(for='inlineCheckbox2') &#xD558;&#xB8E8; &#xC885;&#xC77C;
+      .modal-footer
+        button.btn.btn-secondary(type='button', data-dismiss='modal') &#xCDE8;&#xC18C;
+        button#reg-schedule.btn.btn-primary(type='button') &#xC77C;&#xC815; &#xB9CC;&#xB4E4;&#xAE30;
